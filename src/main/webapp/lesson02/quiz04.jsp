@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Quiz02</title>
+<title>계산기</title>
 
 <!-- bootstrap -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>        
@@ -20,10 +20,18 @@
 </head>
 <body>
 	<div class="container">
-		<h1>날짜, 시간 링크</h1>
-		<a href="/lesson02/quiz02_1.jsp?type=time" class="btn btn-info">현재 시간 확인</a> 
-		<!--  key-value로 만들어서 값을 받는 것도 가능 -->
-		<a href="/lesson02/quiz02_1.jsp?type=date" class="btn btn-success">현재 날짜 확인</a>
+		<h1>사칙 연산 계산기</h1>
+		<form method="post" action="/lesson02/quiz04_1.jsp">
+			<input type="text" name="number1">
+			<select name="calculation">
+				<option>+</option>
+				<option>-</option>
+				<option>/</option>
+				<option>*</option>
+			</select>
+			<input type="text" name="number2">
+			<button type="submit" class="btn-success">계산하기</button>
+		</form>
 	</div>
 </body>
 </html>

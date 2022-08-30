@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,7 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Quiz02</title>
-
 <!-- bootstrap -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>        
 
@@ -17,13 +18,28 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+
 </head>
 <body>
+	<%
+	Date now = new Date();
+	SimpleDateFormat sdf; // 이런식으로 null로 선언해놓고 나중에 넣어도 됨
+	
+	String type = request.getParameter("type");
+	
+	if (type.equals("time")) {
+		sdf = new SimpleDateFormat("현재 시간은 HH시 mm분 ss초입니다");
+	} else if (type.equals("date")) {
+		sdf = new SimpleDateFormat("현재 날짜는 yyyy년 MM월 dd일입니다");
+	} else {
+		sdf = new SimpleDateFormat();
+	}
+	
+	String result = sdf.format(now);
+	%>
+	
 	<div class="container">
-		<h1>날짜, 시간 링크</h1>
-		<a href="/lesson02/quiz02_1.jsp?type=time" class="btn btn-info">현재 시간 확인</a> 
-		<!--  key-value로 만들어서 값을 받는 것도 가능 -->
-		<a href="/lesson02/quiz02_1.jsp?type=date" class="btn btn-success">현재 날짜 확인</a>
+		<div class="display-3"><%= result %></div>
 	</div>
 </body>
 </html>

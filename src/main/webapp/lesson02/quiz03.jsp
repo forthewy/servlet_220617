@@ -4,8 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Quiz02</title>
-
+<title>체격 조건</title>
 <!-- bootstrap -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>        
 
@@ -20,10 +19,18 @@
 </head>
 <body>
 	<div class="container">
-		<h1>날짜, 시간 링크</h1>
-		<a href="/lesson02/quiz02_1.jsp?type=time" class="btn btn-info">현재 시간 확인</a> 
-		<!--  key-value로 만들어서 값을 받는 것도 가능 -->
-		<a href="/lesson02/quiz02_1.jsp?type=date" class="btn btn-success">현재 날짜 확인</a>
+		<h1>체격 조건 입력</h1>
+		<form method="get" action="/lesson02/quiz03_1.jsp">
+		<!-- form, name, submit 3종 세트 -->
+		<!--  "/lesson02/quiz03_1.jsp" servlet이 아니므로 확장자까지 써야함 -->
+			<div class="d-flex align-items-end">
+					<input type="text" placeholder="키를 입력하세요" class="form-control col-2" name="height">
+					<span>cm</span>
+					<input type="text" placeholder="키를 입력하세요" class="form-control col-2" name="weight">
+					<span>kg</span>
+				<input type="submit" class="btn btn-info h-75" value="계산">
+			</div>
+		</form>
 	</div>
 </body>
 </html>
