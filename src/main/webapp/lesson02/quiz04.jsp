@@ -22,15 +22,17 @@
 	<div class="container">
 		<h1>사칙 연산 계산기</h1>
 		<form method="post" action="/lesson02/quiz04_1.jsp">
-			<input type="text" name="number1">
-			<select name="calculation">
-				<option>+</option>
-				<option>-</option>
-				<option>/</option>
-				<option>*</option>
-			</select>
-			<input type="text" name="number2">
-			<button type="submit" class="btn-success">계산하기</button>
+			<div class="d-flex w-75">
+				<input type="text" name="number1" class="form-control col-3 mr-3">
+				<select name="calculation" class="form-control col-2 mr-3">
+					<option>+</option>
+					<option>-</option>
+					<option>/</option>
+					<option>*</option>
+				</select>
+				<input type="text" name="number2" class="form-control col-3 mr-3">
+				<input type="submit" class="btn btn-success" value="계산하기">
+			</div>		
 		</form>
 	</div>
 </body>
