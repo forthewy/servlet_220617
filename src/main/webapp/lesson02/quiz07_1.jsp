@@ -1,3 +1,4 @@
+<%@page import="java.util.Iterator"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
@@ -40,12 +41,11 @@
     map = new HashMap<String, Object>() {{ put("name", "반올림피자"); put("menu", "피자"); put("point", 4.3); } };
     list.add(map);
 %>
-
 <%
 	String menu = request.getParameter("menu");
 	String filter = request.getParameter("filterLower4");
 %>
-	<div class="container">
+	<div class="container text-center">
 		<h1>검색 결과</h1>
 		<table class="table">
 			<thead>
@@ -56,10 +56,27 @@
 				</tr>
 			</thead>
 			<tbody>
-			
+			<%
+			Iterator<Map<String, Object>> iter = list.iterator();
+			while (iter.hasNext()) {
+				Map<String, Object> reviews = iter.next();
+				if (reviews.get("menu").equals(menu)) {
+					Double p = (Double)reviews.get("point");
+					if (filter != null && p <= 4.0) {
+						continue;
+					}
+			%>
+				<tr>
+				<td><%= reviews.get("menu")%></td>
+				<td><%= reviews.get("name")%></td>
+				<td><%= reviews.get("point")%></td>
+				</tr>
+			<%
+				}
+			}
+			%>
 			</tbody>
 		</table>
 	</div>
-
 </body>
 </html>

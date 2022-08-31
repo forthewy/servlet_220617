@@ -23,7 +23,7 @@
 <body>
 	<div class="container">
 		<h1>메뉴 검색</h1>
-		<form method="post" action="/lesson02/quiz07_1">
+		<form method="post" action="/lesson02/quiz07_1.jsp">
 			<div class="d-flex">
 				<input type="text" class="form-control col-4 mr-2" name="menu">
 				<div class="mt-3">
