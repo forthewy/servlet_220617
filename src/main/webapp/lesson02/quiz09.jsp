@@ -22,23 +22,23 @@
 
 </head>
 <body>
-	<%
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy M dd");
-	%>
 	<div class="container">
 		<div class="display-4 font-weight-bold">오늘부터 1일</div>
-		<%
+	<%
+		Calendar today = Calendar.getInstance();
+		today.add(Calendar.DATE, -1);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 M월 d일");
+
 		for (int i = 100; i <= 1000; i+= 100) {
-			Calendar today = Calendar.getInstance();
 			today.add(Calendar.DATE, i);
 			String[] date = sdf.format(today.getTime()).split(" ");
 			String[] unit = {"년", "월", "일"};
-		%>
+	%>
 		<div class="display-3">
 			<b><%= i %></b>일 :
 			<span class="text-danger">
 				<%
-				for (int j = 0; j < date.length; j++) {
+				 for (int j = 0; j < date.length; j++) {
 				%>
 				<b><%= date[j] %></b><%= unit[j] %>
 				<% 
