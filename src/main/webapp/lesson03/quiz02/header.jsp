@@ -10,7 +10,7 @@
 		</div>
 		<div>
 			<form method="get" action="/lesson03/quiz02/info_template.jsp">
-				<div class="input-group d-flex">
+				<div class="input-group">
 					<input type="text" class="form-control" name="title">
 					<button class="btn btn-info" type="submit">검색</button>
 				</div>

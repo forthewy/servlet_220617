@@ -6,11 +6,6 @@
     pageEncoding="UTF-8"%>
     
  <% 
- Map<String, Object> artistInfo = new HashMap<>();
- artistInfo.put("name", "아이유");
- artistInfo.put("debute", 2008);
- artistInfo.put("agency", "EDAM엔터테인먼트");
- artistInfo.put("photo", "http://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/081/867/444/81867444_1616662460652_1_600x600.JPG");
  
 //아이유 노래 리스트 
  List<Map<String, Object>> musicList = new ArrayList<>();
@@ -89,28 +84,40 @@
 	<% // 검색이 뭘로 될지 모른다... a는 유일한 값(id)을 가지고 와야한다.
 	 String title = request.getParameter("title");	
 	 String id = request.getParameter("id");
-		for (Map<String, Object> song: musicList) {
-			if (song.get("id").equals(id) || song.get("title").equals(title)) {
-	%>
+	 String key = title == null? "id" : "title"; 
+		
+	 for (Map<String, Object> song: musicList) {
+		 boolean isSameId =  key.equals("id") && song.get(key) == Integer.valueOf(id);
+		 boolean isSameTitle = key.equals("title") && song.get(key).equals(title);
+		 if (isSameId || isSameTitle) {
+		 %>
 		<div>
 			<img src=<%= song.get("thumbnail") %> alt="사진" width="200px">
 		</div>
 		<div class="ml-3">
 			<div class="display-3"><%= song.get("title") %></div>
 			<div class="text-success fw-bold"><b><%= song.get("singer") %></b></div><br>
-			<table class="songInfoText">
+			<table class="songInfoText text-secondary text-start">
 				<tr>
-					<td class="text-secondary">앨범</td>
+					<td>앨범</td>
 					<td class="text-secondary"><%= song.get("album") %></td>
 				</tr>
-				<span class="text-secondary">재생 시간
-					<%= (int)song.get("time")/ 60 %> : <%= (int)song.get("time") % 60 %>
-				</span><br>
-				<span class="text-secondary">작곡가<%= song.get("composer") %></span><br>
-				<span class="text-secondary">작사가<%= song.get("lyricist") %></span>
+				<tr>
+					<td>재생시간</td>
+					<td><%= (int)song.get("time")/ 60 %> : <%= (int)song.get("time") % 60 %></td>
+				</tr>
+				<tr>
+					<td>작곡가</td>
+					<td><%= song.get("composer") %></td>
+				</tr>
+				<tr>
+					<td>작사가</td>
+					<td><%= song.get("lyricist") %></td>
+				</tr>
 			</table>
 		</div>
 		<%
+			break;
 			}
 		}
 		%>
