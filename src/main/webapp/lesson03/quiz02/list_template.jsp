@@ -21,22 +21,27 @@ header {
 	height: 70px;
 }
 nav {
-	height: 70px;
+	height: 40px;
 }
-.content {
-	height: 500px;
+nav a:link { color: black; text-decoration: none;}
+nav a:visited { color: black; text-decoration: none;}
+nav a:hover { color: black; text-decoration: underline;}
+
+content {
+	height: auto;
 }
 footer {
 	height: 50px;
 }
+
 </style>
 
 </head>
 <body>
-	<div id="wrap">
+	<div id="wrap" class="container">
 		<jsp:include page="header.jsp"/> 
 		<jsp:include page="menu.jsp"/> 
-		<div class="content bg-primary"></div>
+		<jsp:include page="list.jsp"/>
 		<jsp:include page="footer.jsp"/> 
 	</div>
 </body>
