@@ -33,6 +33,9 @@ content {
 .songInfoText {
 	font-size : 13px;
 }
+tr td {
+	padding-right: 10px;
+}
 footer {
 	height: 50px;
 }

@@ -77,11 +77,47 @@
  musicList.add(musicInfo);
  
  %>      
-    
-<div class="content">
+
+
+<section class="content">
 	<h4><b>곡 정보</b></h4>
 	<div class="d-flex border border-success p-3">
 	<% // 검색이 뭘로 될지 모른다... a는 유일한 값(id)을 가지고 와야한다.
+	// 상세 정보를 보여줄 target map 세팅
+	Map<String, Object> target = null;
+	
+	// 1. 목록에서 클릭하고 들어온 경우 (id 값)
+	if (request.getParameter("id") != null) {
+		int paramId = Integer.valueOf(request.getParameter("id"));
+		for (Map<String, Object> music: musicList) {
+			if (paramId == (int)music.get("id")) {
+				target = music;
+				break;
+			}
+		}
+	}
+	
+	
+	// 2. 상단에서 검색한 경우 (search 값)
+	if (request.getParameter("title") != null) {
+		String paramSearch = request.getParameter("title");
+		for (Map<String, Object> music: musicList) {
+			if (paramSearch.equals(music.get("title"))) {
+				target = music;
+				break;
+			}
+		}
+	}
+	
+	
+	//out.print(target);
+		
+	
+	
+	
+	
+	
+	
 	 String title = request.getParameter("title");	
 	 String id = request.getParameter("id");
 	 String key = title == null? "id" : "title"; 
@@ -96,8 +132,8 @@
 		</div>
 		<div class="ml-3">
 			<div class="display-3"><%= song.get("title") %></div>
-			<div class="text-success fw-bold"><b><%= song.get("singer") %></b></div><br>
-			<table class="songInfoText text-secondary text-start">
+			<div class="text-success fw-bold"><b><%= song.get("singer") %></b></div>
+			<table class="songInfoText text-secondary text-start"> <%-- div로 가로로 두개를 붙여서 만드는 것도 가능하다. --%>
 				<tr>
 					<td>앨범</td>
 					<td class="text-secondary"><%= song.get("album") %></td>
@@ -127,4 +163,11 @@
 		<hr>
 		<span>가사정보 없음</span>
 	</div>
-</div>
+</section>
+<%-- <%
+	} else {	// target이 없는 경우
+%>
+		정보없음
+<%
+	}
+%> --%>
