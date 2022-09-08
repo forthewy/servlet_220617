@@ -1,7 +1,6 @@
 package com.test.lesson04;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.annotation.WebServlet;
@@ -11,27 +10,30 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.test.common.MysqlService;
 
-@WebServlet ("/lesson04/quiz02_insert")
-public class InsertQuiz02 extends HttpServlet{
-	
+@WebServlet ("/lesson04/quiz02_delete")
+public class DeleteQuiz02 extends HttpServlet{
+
 	@Override
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		// request param 꺼내기 (삭제할 id)
+		int deleteId = Integer.valueOf(request.getParameter("deleteId")); // null 일수 없으니 int로 받는다.
+		String deleteQuery = "delete from `bookmark` where `id`="  + deleteId; // 
+		
 		MysqlService ms = MysqlService.getInstance();
 		ms.connect();
 		
-		String name = request.getParameter("name");
-		String url = request.getParameter("url");
-		
-		String insertQuery = "insert into `bookmark` (name, url) values ('" 
-				+ name + "', '" + url + "')";
-		
 		try {
-			ms.update(insertQuery);
+			ms.update(deleteQuery);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		
+		
+		// db 연결 해제
 		ms.disconnect();
+		
+		// 목록화면 이동 - redirect
 		response.sendRedirect("/lesson04/quiz02.jsp");
+		
 	}
 }

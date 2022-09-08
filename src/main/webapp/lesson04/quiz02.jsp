@@ -21,21 +21,21 @@
 
 </head>
 <body>
-<%
-MysqlService ms = MysqlService.getInstance();
-ms.connect();
-
-String selectQuery = "select * from `bookmark`";
-					
-ResultSet result = ms.select(selectQuery);
-
-%>
+	<%
+		MysqlService ms = MysqlService.getInstance();
+		ms.connect();
+		
+		String selectQuery = "select * from `bookmark` order by `id` desc";
+							
+		ResultSet result = ms.select(selectQuery);
+	%>
 	<div class="container text-center">
 		<table class="table">
 			<thead>
 			<tr>
 				<th>사이트</th>
 				<th>사이트 주소</th>
+				<th>삭제</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -44,13 +44,17 @@ ResultSet result = ms.select(selectQuery);
 			%>
 				<tr>
 					<td><%= result.getString("name") %></td>
-					<td><a href=<%= result.getString("url") %>><%= result.getString("url") %></a></td>
+					<td><a href=<%= result.getString("url") %> target="_blank"><%= result.getString("url") %></a></td>
+					<td><a class="btn btn-danger" href="/lesson04/quiz02_delete?deleteId=<%= result.getInt("id")%>">삭제</a></td>
 				</tr>
 			<%
 			}
 			%>
-			</tbody>
-		</table>
+			</table>
+				<div>
+					<a href="/lesson04/quiz02_1.jsp" class="btn btn-success">추가하러 가기</a>
+				</div>
+		</tbody>
 	</div>
 </body>
 <%
