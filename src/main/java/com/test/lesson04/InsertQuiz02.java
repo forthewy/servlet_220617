@@ -22,7 +22,8 @@ public class InsertQuiz02 extends HttpServlet{
 		String name = request.getParameter("name");
 		String url = request.getParameter("url");
 		
-		String insertQuery = "insert into `bookmark` (name, url) values ('" + name + ", " + "'" + url + "')";
+		String insertQuery = "insert into `bookmark` (name, url) values ('" 
+				+ name + "', '" + url + "')";
 		
 		try {
 			ms.update(insertQuery);

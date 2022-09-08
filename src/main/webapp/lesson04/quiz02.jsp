@@ -30,26 +30,28 @@ String selectQuery = "select * from `bookmark`";
 ResultSet result = ms.select(selectQuery);
 
 %>
-	<table class="table">
-		<thead>
-		<tr>
-			<th>사이트</th>
-			<th>사이트 주소</th>
-		</tr>
-		</thead>
-		<tbody>
-		<%
-		while (result.next()) {
-		%>
+	<div class="container text-center">
+		<table class="table">
+			<thead>
 			<tr>
-				<td><%= result.getString("name") %></td>
-				<td><%= result.getString("url") %></td>
+				<th>사이트</th>
+				<th>사이트 주소</th>
 			</tr>
-		<%
-		}
-		%>
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+			<%
+			while (result.next()) {
+			%>
+				<tr>
+					<td><%= result.getString("name") %></td>
+					<td><a href=<%= result.getString("url") %>><%= result.getString("url") %></a></td>
+				</tr>
+			<%
+			}
+			%>
+			</tbody>
+		</table>
+	</div>
 </body>
 <%
 ms.disconnect();

@@ -18,15 +18,15 @@
 
 </head>
 <body>
-	<div>
+	<div class="ml-5">
 		<h1>즐겨찾기 추가</h1>
 		<form method="post" action="/lesson04/quiz02_insert">
 			<div>
-				<b>사이트명</b>
+				<b>사이트명:</b>
 				<input type="text" class="form-control col-2" name="name">
 			</div>
 			<div class="mb-3">
-				<b>사이트 주소</b>
+				<b>사이트 주소:</b>
 				<input type="text" class="form-control col-3" name="url">
 			</div>
 			<input type="submit" class="btn btn-success" value="추가">
