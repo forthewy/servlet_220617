@@ -10,28 +10,28 @@
 							+ " on A.id = B.sellerId order by A.id desc";
 	ResultSet result = ms.select(selectQuery);
 	%>
-	<div>
-		<ul class="nav nav-fill">
+	<div class="mt-3">
+		<ul class="nav">
 			<% while (result.next()) {
 			%>
-					<li class="nav-item selling border border-danger m-3 col-3"	width="300px" height="200px" >
-					<% if (result.getString("pictureUrl") != null) {
+					<li class="nav-item selling border border-danger p-3 m-1">
+					<% if (result.getString("picture") != null) {
 					%>
 						<div>
-							<img src=<%= result.getString("pictureUrl") %> width="200px" height="100px">
+							<img src=<%= result.getString("picture") %> width="200px" height="100px">
 						</div>
 					<%
 					   } else {
 					%>
-						<div class="noImg text-secondary">
+						<div class="noImg text-secondary text-center">
 							이미지 없음
 						</div>
 					<%
 					}
 					%>					
-						<h5><%= result.getString("title")%></h5>
-						<h5><%= result.getInt("price") %></h5>
-						<h5><%= result.getString("nickname") %></h5>
+						<span><%= result.getString("title")%></span><br>
+						<span><%= result.getInt("price") %></span><br>
+						<span class="text-align-start"><%= result.getString("nickname") %></span><br>
 					</li>
 			<% 
 			}

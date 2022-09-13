@@ -25,6 +25,20 @@ header {
 	height:50px
 	color : white;
 	background-color: orange;
+	font-weight: bold;
+	font-size: 18px;
+}
+.menu a:link {
+	color:white;
+	text-decoration: none;
+}
+.menu a:hover {
+	color:white;
+	text-decoration: none;
+}
+.menu a:visited {
+	color:white;
+	text-decoration: none;
 }
 .contents {
 	height: auto;
